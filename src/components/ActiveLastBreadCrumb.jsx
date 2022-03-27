@@ -30,7 +30,7 @@ const ActiveLastBreadCrumb = () => {
         {Array.isArray(pathnames) &&
           pathnames.map((path, index) => {
             const last = index === pathnames.length - 1;
-            const href = `/${pathnames.slice(0, index + 1).join('/')}`;
+            const href = `/courses/${pathnames.slice(0, index + 1).join('/')}`;
             const label = path.replace('-', ' ');
             return last ? (
               <Typography
