@@ -74,7 +74,7 @@ const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
     color: theme.palette.text.secondary,
     borderTopRightRadius: theme.spacing(2),
     borderBottomRightRadius: theme.spacing(2),
-    paddingRight: theme.spacing(1),
+    padding: theme.spacing(0.5),
     fontWeight: theme.typography.fontWeightMedium,
     '&.Mui-expanded': {
       fontWeight: theme.typography.fontWeightRegular
@@ -87,6 +87,12 @@ const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
       color: 'var(--tree-view-color)'
     },
     [`& .${treeItemClasses.label}`]: {
+      '& p': {
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        width: '100%'
+      },
       fontWeight: 'inherit',
       color: 'inherit'
     }
