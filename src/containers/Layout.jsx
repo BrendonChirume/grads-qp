@@ -1,70 +1,62 @@
-import Head from 'next/head';
-import { ThemeProvider } from '@mui/material/styles';
-import { CacheProvider } from '@emotion/react';
-import { Provider } from 'react-redux';
-import { UserProvider } from '@auth0/nextjs-auth0';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
-import { store } from '../redux/store';
-import theme from '../theme';
-import createEmotionCache from '../createEmotionCache';
-import Filters from '../components/Filters';
 import Navigation from '../components/Navigation';
 import ActiveLastBreadCrumb from '../components/ActiveLastBreadCrumb';
+import PaperTreeView from '../components/PaperTreeView';
+import { Stack, Typography } from '@mui/material';
+import SchoolIcon from '@mui/icons-material/School';
 
-// Client-side cache, shared for the whole session of the user in the browser.
-const clientSideEmotionCache = createEmotionCache();
-
-const Providers = (props) => {
-  const { emotionCache = clientSideEmotionCache, children } = props;
-
-  return (
-    <CacheProvider value={emotionCache}>
-      <Head>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-      </Head>
-      <UserProvider>
-        <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          <Provider store={store}>{children}</Provider>
-        </ThemeProvider>
-      </UserProvider>
-    </CacheProvider>
-  );
-};
-
-Providers.propTypes = {
-  children: PropTypes.oneOf([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
-    .isRequired,
-  emotionCache: PropTypes.shape({})
-};
-
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 function LayoutContent(props) {
   const { window, children } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [crumbs, setCrumbs] = useState([]);
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+    setMobileOpen((prev) => !prev);
   };
 
   const drawer = (
     <Box sx={{ p: 1 }}>
-      <Filters />
+      <Stack
+        direction="row"
+        sx={{
+          alignItems: 'center',
+          whiteSpace: 'nowrap',
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+          width: '100%'
+        }}
+      >
+        <SchoolIcon />
+        <Typography variant="h6" sx={{ fontWeight: 'bold', ml: 2, my: 2 }}>
+          Informatics
+        </Typography>
+      </Stack>
+      <PaperTreeView appedtoCrumb={(n) => setCrumbs(n)} />
     </Box>
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
+    <Box
+      component="main"
+      sx={{
+        display: 'flex',
+        backgroundColor: (theme) =>
+          theme.palette.mode === 'light'
+            ? theme.palette.grey[100]
+            : theme.palette.grey[900],
+        flexGrow: 1,
+        height: '100vh',
+        overflow: 'auto'
+      }}
+    >
       {/* Navigation */}
       <Navigation handleDrawerToggle={handleDrawerToggle} />
 
@@ -96,7 +88,9 @@ function LayoutContent(props) {
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
-              mt: 8
+              mt: 8,
+              overflow: 'auto',
+              height: 'calc(100% - 64px)'
             }
           }}
           open
@@ -106,11 +100,16 @@ function LayoutContent(props) {
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{
+          flexGrow: 1,
+          pt: 4,
+          px: { xs: 1, md: 3 },
+          width: `calc(100% - ${drawerWidth}px)`
+        }}
       >
         <Toolbar />
         <Box sx={{ mb: 3 }}>
-          <ActiveLastBreadCrumb />
+          <ActiveLastBreadCrumb crumbs={crumbs} mobileOpen={mobileOpen} />
         </Box>
         {children}
       </Box>
@@ -118,18 +117,14 @@ function LayoutContent(props) {
   );
 }
 
-const Layout = ({ children }) => (
-  <Providers>
-    <LayoutContent>{children}</LayoutContent>
-  </Providers>
-);
+const Layout = ({ children }) => <LayoutContent>{children}</LayoutContent>;
 Layout.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
    */
   window: PropTypes.func,
-  children: PropTypes.oneOf([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
     .isRequired
 };
 

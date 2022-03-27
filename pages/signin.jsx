@@ -4,21 +4,21 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { Paper } from '@mui/material';
 import { useAction } from '../src/lib/hooks';
+import RouterLink from '../src/RouterLink';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+      <RouterLink color="inherit" href="https://mui.com/">
         Nust QP Directory
-      </Link>{' '}
+      </RouterLink>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -86,14 +86,14 @@ export default function SignIn() {
         </Button>
         <Grid container>
           <Grid item xs>
-            <Link href="#" variant="body2">
+            <RouterLink href="#" variant="body2">
               Forgot password?
-            </Link>
+            </RouterLink>
           </Grid>
           <Grid item>
-            <Link href="#" variant="body2">
+            <RouterLink href="#" variant="body2">
               {"Don't have an account? Sign Up"}
-            </Link>
+            </RouterLink>
           </Grid>
         </Grid>
         <Copyright sx={{ mt: 5 }} />
