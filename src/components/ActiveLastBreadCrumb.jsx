@@ -13,7 +13,7 @@ const handleClick = (event) => {
 
 const ActiveLastBreadCrumb = () => {
   const { query } = useRouter();
-  const pathnames = query.year;
+  const pathnames = query.courses;
 
   const mobileOpen = useMediaQuery(({ breakpoints }) => breakpoints.down('sm'));
 
@@ -25,7 +25,7 @@ const ActiveLastBreadCrumb = () => {
         aria-label="breadcrumb"
       >
         <RouterLink href="/" underline="hover" color="inherit">
-          <Typography sx={{ textTransform: 'capitalize' }}>Informatics</Typography>
+          <Typography sx={{ textTransform: 'capitalize' }}>Courses</Typography>
         </RouterLink>
         {Array.isArray(pathnames) &&
           pathnames.map((path, index) => {

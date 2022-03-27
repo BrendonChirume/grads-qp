@@ -15,6 +15,7 @@
     "@mui/icons-material": "^5.5.1",
     "@mui/lab": "^5.0.0-alpha.74",
     "@mui/material": "^5.5.2",
+    "@pdftron/pdfjs-express-viewer": "^8.3.0",
     "@reduxjs/toolkit": "^1.8.0",
     "axios": "^0.26.1",
     "next": "12.1.0",

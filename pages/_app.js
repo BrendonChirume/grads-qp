@@ -8,11 +8,15 @@ import { UserProvider } from '@auth0/nextjs-auth0';
 import createEmotionCache from '../src/createEmotionCache';
 import { store } from '../src/redux/store';
 import theme from '../src/theme';
+import Layout from '../src/containers/Layout';
 
 const clientSideEmotionCache = createEmotionCache();
 
-function MyApp(props) {
+const EmptyLayout = ({ children }) => <>{children}</>;
+export default function MyApp(props) {
   const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
+  const DynLayout = Component.Layout || Layout;
+
   return (
     <UserProvider>
       <CacheProvider value={emotionCache}>
@@ -23,12 +27,12 @@ function MyApp(props) {
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
           <Provider store={store}>
-            <Component {...pageProps} />
+            <DynLayout>
+              <Component {...pageProps} />
+            </DynLayout>
           </Provider>
         </ThemeProvider>
       </CacheProvider>
     </UserProvider>
   );
 }
-
-export default MyApp;

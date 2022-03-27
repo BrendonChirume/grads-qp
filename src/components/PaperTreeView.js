@@ -166,10 +166,9 @@ const renderTree = ({ name, children }, rootID, path = ['']) => {
 export default function PaperTreeView() {
   const { push } = useRouter();
   const handleSelect = ({ currentTarget }, nodeIds) => {
-    const path = `/${currentTarget.parentNode
+    const path = `/courses/${currentTarget.parentNode
       .getAttribute('path')
       .replace(/ /g, '-')}`;
-    console.log(path);
     push(path);
   };
 
