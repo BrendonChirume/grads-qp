@@ -1,6 +1,7 @@
 import { History } from '@mui/icons-material';
 import { Box, Grid, Typography } from '@mui/material';
 import QPCard from '../src/components/qp-card';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 export default function Index() {
   return (
@@ -35,3 +36,5 @@ export default function Index() {
     </Grid>
   );
 }
+
+export const getServerSideProps = withPageAuthRequired();

@@ -13,6 +13,14 @@ const theme = createTheme({
     error: {
       main: red.A400
     }
+  },
+  typography: {
+    truncate: (width) => ({
+      width,
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      overflow: 'hidden'
+    })
   }
 });
 
