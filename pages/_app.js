@@ -18,21 +18,21 @@ export default function MyApp(props) {
   const DynLayout = Component.Layout || Layout;
 
   return (
-    <UserProvider>
-      <CacheProvider value={emotionCache}>
-        <Head>
-          <meta name="viewport" content="initial-scale=1, width=device-width" />
-        </Head>
-        <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
+    <CacheProvider value={emotionCache}>
+      <Head>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+      </Head>
+      <ThemeProvider theme={theme}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+        <UserProvider>
           <Provider store={store}>
             <DynLayout>
               <Component {...pageProps} />
             </DynLayout>
           </Provider>
-        </ThemeProvider>
-      </CacheProvider>
-    </UserProvider>
+        </UserProvider>
+      </ThemeProvider>
+    </CacheProvider>
   );
 }
