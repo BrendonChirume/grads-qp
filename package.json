@@ -1,12 +1,13 @@
 {
   "name": "nust-qp-directory",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.7.0",
