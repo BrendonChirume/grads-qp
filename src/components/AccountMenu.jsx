@@ -7,21 +7,24 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import { useUser } from '@auth0/nextjs-auth0';
 import { Typography } from '@mui/material';
 import RouterLink from '../RouterLink';
+import { useAuth } from '../../context/AuthContext';
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const { user } = useUser();
+  const { user, signOut } = useAuth();
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+  React.useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -29,10 +32,10 @@ export default function AccountMenu() {
 
   const avatar = (
     <Avatar
-      src={user?.picture}
+      src={user?.photoURL}
       sx={{ width: { xs: 35, sm: 40 }, height: { xs: 35, sm: 40 } }}
     >
-      {user?.name
+      {user?.displayName
         .split(' ')
         .map((n) => n.charAt(0))
         .join('')}
@@ -90,11 +93,11 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem>
+        <MenuItem component={RouterLink} href={`/profile/${user?.email}`}>
           {avatar}
           <Box>
             <Typography sx={({ typography }) => typography.truncate('100%')}>
-              {user?.name}
+              {user?.displayName}
             </Typography>
             <Typography
               variant="subtitle2"
@@ -111,7 +114,7 @@ export default function AccountMenu() {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem component={RouterLink} href="/api/auth/logout">
+        <MenuItem onClick={() => signOut()}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

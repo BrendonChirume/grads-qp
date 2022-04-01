@@ -21,6 +21,7 @@ const ActiveLastBreadCrumb = () => {
     <div role="presentation" onClick={handleClick}>
       <Breadcrumbs
         maxItems={mobileOpen ? 2 : 8}
+        sx={{ pb: 2 }}
         separator={<NavigateNextIcon fontSize="small" />}
         aria-label="breadcrumb"
       >

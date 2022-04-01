@@ -18,9 +18,16 @@
     "@pdftron/pdfjs-express-viewer": "^8.3.0",
     "@reduxjs/toolkit": "^1.8.0",
     "axios": "^0.26.1",
+    "firebase": "^9.6.10",
+    "firebase-admin": "^10.0.0",
+    "js-cookie": "^3.0.1",
     "next": "12.1.0",
+    "next-absolute-url": "^1.2.2",
+    "next-firebase-auth": "^0.14.1-alpha.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-firebase-hooks": "^5.0.3",
+    "react-firebaseui": "^6.0.0",
     "react-redux": "^7.2.6"
   },
   "devDependencies": {

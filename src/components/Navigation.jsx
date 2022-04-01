@@ -37,7 +37,7 @@ const Navigation = ({ handleDrawerToggle }) => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', sm: 'flex' } }}
           >
-            NUST QP DIRECTORY
+            GRADS QP
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <MainSearch />

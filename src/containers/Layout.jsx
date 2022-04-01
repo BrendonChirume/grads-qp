@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import Navigation from '../components/Navigation';
-import ActiveLastBreadCrumb from '../components/ActiveLastBreadCrumb';
 import PaperTreeView from '../components/PaperTreeView';
 import { Stack, Typography } from '@mui/material';
 import SchoolIcon from '@mui/icons-material/School';
@@ -14,7 +13,6 @@ const drawerWidth = 250;
 function LayoutContent(props) {
   const { window, children } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [crumbs, setCrumbs] = useState([]);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prev) => !prev);
@@ -37,7 +35,7 @@ function LayoutContent(props) {
           Informatics
         </Typography>
       </Stack>
-      <PaperTreeView appedtoCrumb={(n) => setCrumbs(n)} />
+      <PaperTreeView />
     </Box>
   );
 
@@ -108,9 +106,7 @@ function LayoutContent(props) {
         }}
       >
         <Toolbar />
-        <Box sx={{ mb: 3 }}>
-          <ActiveLastBreadCrumb crumbs={crumbs} mobileOpen={mobileOpen} />
-        </Box>
+
         {children}
       </Box>
     </Box>
