@@ -12,7 +12,7 @@ export default function Login() {
       sx={{
         height: '100%',
         position: 'relative',
-        background: 'linear-gradient(120deg, #4B79A1 0%, #283E51 100%)',
+        background: 'linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)',
         width: '100%'
       }}
     >
