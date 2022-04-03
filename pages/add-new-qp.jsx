@@ -1,21 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  Alert,
-  Box,
-  Button,
-  FormHelperText,
-  Grid,
-  Stack,
-  TextField,
-  Typography
-} from '@mui/material';
+import React, { useState } from 'react';
+import { Alert, Avatar, Box, Button, Grid, Stack, Typography } from '@mui/material';
+import StyledInput from '../components/StyledInput';
+import MainLayout from '../containers/MainLayout';
+import Icons from '../components/Icons';
 
 const AddNewQp = (props) => {
+  const [errorFile, setErrorFile] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     console.log(formData.getAll());
+  };
+
+  const handleChange = (event) => {
+    const allowedType = ['application/pdf'];
+    const [files] = event.target.files;
+    if (allowedType.includes(files.type)) {
+      return setErrorFile(false);
+    } else {
+      return setErrorFile(true);
+    }
   };
 
   return (
@@ -26,14 +30,47 @@ const AddNewQp = (props) => {
           <Button variant="contained">Submit</Button>
         </span>
       </Stack>
-      <Alert severity="error" sx={{ my: 2 }}>
-        Please note that Papers that are not clear will be removed
+      <Alert severity="info" variant="filled" sx={{ my: 2 }}>
+        Please note that Papers are reviewed and removed if not clear.
       </Alert>
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
-          <TextField
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Box
+            sx={{
+              p: 2,
+              borderRadius: 4,
+              border: ({ palette }) => `1px solid ${palette.divider}`
+            }}
+          >
+            <Avatar
+              variant="square"
+              sx={{
+                borderRadius: 4,
+                height: 120,
+                width: 120
+              }}
+            >
+              <Icons.ImgAlt sx={{ height: 120, width: 120 }} />
+            </Avatar>
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
+          <StyledInput
             fullWidth
-            size="small"
+            aria-labelledby="paper-year"
+            id="paper-year"
+            name="paper-year"
+            required
+            error={errorFile}
+            type="file"
+            onChange={handleChange}
+            accept="application/pdf"
+            helperText="Please upload PDFs only!"
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <StyledInput
+            fullWidth
             label="Course name"
             aria-labelledby="course-name"
             id="course-name"
@@ -42,9 +79,8 @@ const AddNewQp = (props) => {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
+          <StyledInput
             fullWidth
-            size="small"
             label="Course departmanet"
             aria-labelledby="course-departmanet"
             id="course-departmanet"
@@ -53,9 +89,8 @@ const AddNewQp = (props) => {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
+          <StyledInput
             fullWidth
-            size="small"
             label="Course code"
             aria-labelledby="course-code"
             id="course-code"
@@ -64,9 +99,8 @@ const AddNewQp = (props) => {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
+          <StyledInput
             fullWidth
-            size="small"
             label="Paper Name"
             aria-labelledby="paper-name"
             id="paper-name"
@@ -75,28 +109,15 @@ const AddNewQp = (props) => {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
+          <StyledInput
             id="date"
-            label="Birthday"
+            label="Year Written"
             type="date"
-            defaultValue="2017-05-24"
-            sx={{ width: 220 }}
+            fullWidth
             InputLabelProps={{
               shrink: true
             }}
           />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            fullWidth
-            size="small"
-            aria-labelledby="paper-year"
-            id="paper-year"
-            name="paper-year"
-            required
-            type="file"
-          />
-          <FormHelperText>Please upload PDFs only!</FormHelperText>
         </Grid>
       </Grid>
     </Box>
@@ -104,5 +125,6 @@ const AddNewQp = (props) => {
 };
 
 AddNewQp.propTypes = {};
+AddNewQp.Layout = MainLayout;
 
 export default AddNewQp;

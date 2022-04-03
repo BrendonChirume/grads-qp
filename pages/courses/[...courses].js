@@ -1,11 +1,11 @@
 import { Grid } from '@mui/material';
-import QPCard from '../../../src/components/qp-card';
-import ActiveLastBreadCrumb from '../../../src/components/ActiveLastBreadCrumb';
+import GradsBreadCrumbs from '../../components/GradsBreadCrumbs';
+import QPCard from '../../components/qp-card';
 
 export default function Index() {
   return (
     <>
-      <ActiveLastBreadCrumb />
+      <GradsBreadCrumbs />
       <Grid
         container
         spacing={{ xs: 1, md: 2 }}

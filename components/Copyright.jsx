@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import RouterLink from '../RouterLink';
+import RouterLink from './RouterLink';
 
 const Copyright = (props) => {
   return (

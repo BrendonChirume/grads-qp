@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import RouterLink from '../src/RouterLink';
+import RouterLink from '../components/RouterLink';
 
 // ** Styled Components
 const BoxWrapper = styled(Box)(({ theme }) => ({

@@ -1,12 +1,6 @@
-import {
-  Avatar,
-  Button,
-  Card,
-  CardActionArea,
-  CardActions,
-  CardMedia
-} from '@mui/material';
+import { Avatar, Card, CardActionArea, CardActions, CardMedia } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import Icons from './Icons';
 
 function preventDefault(event) {
   event.preventDefault();
@@ -19,8 +13,17 @@ export default function QPTile() {
         <CardMedia>
           <Avatar
             variant="square"
-            sx={{ width: '100%', height: 130, boxShadow: 1, margin: '0 auto' }}
-          />
+            sx={{
+              width: '100%',
+              height: 130,
+              margin: '0 auto',
+              backgroundColor: '#fff'
+            }}
+          >
+            <Icons.ImgAlt
+              sx={{ height: 110, width: 130, color: 'rgb(229, 231, 235)' }}
+            />
+          </Avatar>
         </CardMedia>
         <CardActions>
           <Typography color="text.secondary" sx={{ flex: 1 }}>

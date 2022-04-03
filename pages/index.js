@@ -1,6 +1,6 @@
 import { History } from '@mui/icons-material';
 import { Box, Grid, Typography } from '@mui/material';
-import QPCard from '../src/components/qp-card';
+import QPCard from '../components/qp-card';
 
 export default function Index() {
   return (

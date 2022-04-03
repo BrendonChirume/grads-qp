@@ -10,7 +10,7 @@ import FolderIcon from '@mui/icons-material/Folder';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { useRouter } from 'next/router';
 
-const data = [
+export const data = [
   {
     name: 'Year 1',
     children: [

@@ -10,8 +10,8 @@ import Tooltip from '@mui/material/Tooltip';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { Typography } from '@mui/material';
-import RouterLink from '../RouterLink';
-import { useAuth } from '../../context/AuthContext';
+import RouterLink from '../components/RouterLink';
+import { useAuth } from '../context/AuthContext';
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -22,10 +22,6 @@ export default function AccountMenu() {
     setAnchorEl(event.currentTarget);
   };
 
-  React.useEffect(() => {
-    console.log(user);
-  }, [user]);
-
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -35,10 +31,7 @@ export default function AccountMenu() {
       src={user?.photoURL}
       sx={{ width: { xs: 35, sm: 40 }, height: { xs: 35, sm: 40 } }}
     >
-      {user?.displayName
-        .split(' ')
-        .map((n) => n.charAt(0))
-        .join('')}
+      {user?.displayName.charAt(0).toUpperCase()}
     </Avatar>
   );
 
@@ -96,7 +89,7 @@ export default function AccountMenu() {
         <MenuItem component={RouterLink} href={`/profile/${user?.email}`}>
           {avatar}
           <Box>
-            <Typography sx={({ typography }) => typography.truncate('100%')}>
+            <Typography sx={({ typography }) => typography.truncate(135)}>
               {user?.displayName}
             </Typography>
             <Typography

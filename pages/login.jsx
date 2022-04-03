@@ -2,8 +2,8 @@ import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import FirebaseAuth from '../src/components/FirebaseAuth';
-import Copyright from '../src/components/Copyright';
+import FirebaseAuth from '../components/FirebaseAuth';
+import Copyright from '../components/Copyright';
 import { Paper } from '@mui/material';
 
 export default function Login() {
