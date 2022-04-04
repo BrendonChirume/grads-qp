@@ -22,7 +22,7 @@ export default function MyApp(props) {
       function LayoutMain(props) {
         const { children, ...rest } = props;
         return (
-          <Component.Layout sx={{}} {...rest}>
+          <Component.Layout sx={{}} variant="temporary" {...rest}>
             <Toolbar />
             {children}
           </Component.Layout>

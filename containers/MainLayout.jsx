@@ -2,10 +2,13 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import LayoutProvider, { useLayout } from '../context/LayoutContext';
 import Navigation from '../components/Navigation';
-import { Container } from '@mui/material';
+import { Container, useMediaQuery } from '@mui/material';
+import MobileDrawer from '../components/MobileDrawer';
 
-function Layout({ children, ...rest }) {
+function Layout({ children, variant, ...rest }) {
   const { handleDrawerToggle } = useLayout();
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  const drawer = <MobileDrawer isMobile={isMobile} />;
   return (
     <Box
       sx={{
@@ -23,11 +26,11 @@ function Layout({ children, ...rest }) {
             background: '#c1c1c1',
             borderRadius: '0.7rem'
           }
-        },
-        ...rest.sx
+        }
       }}
     >
       <Navigation handleDrawerToggle={handleDrawerToggle} />
+      {(!variant && drawer) || (isMobile && drawer)}
       {rest.sx ? (
         <Container sx={{ p: 3, flexGrow: 1 }}>
           {children}
