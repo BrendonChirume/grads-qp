@@ -146,11 +146,12 @@ const Email = (props) => {
         <Banner>
           <Avatar
             sx={{
-              width: 130,
-              height: 130,
+              width: { xs: 110, md: 130 },
+              height: { xs: 110, md: 130 },
               position: 'absolute',
-              bottom: '-17%',
-              left: '4%',
+              top: { xs: '5%', md: '48%' },
+              left: { xs: '50%', md: '4%' },
+              transform: { xs: 'translateX(-50%)', md: 'translateX(0)' },
               border: '3px solid white',
               fontSize: ({ typography }) => typography.pxToRem(48)
             }}
@@ -162,12 +163,15 @@ const Email = (props) => {
               .join('')}
           </Avatar>
           <Box
-            sx={{
+            sx={({ typography }) => ({
               color: ({ palette }) => palette.common.white,
               position: 'absolute',
               bottom: '5%',
-              left: { xs: '40%', lg: '19%' }
-            }}
+              left: { xs: '50%', md: '19%' },
+              transform: { xs: 'translateX(-50%)', md: 'translateX(0)' },
+              textAlign: { xs: 'center', md: 'left' },
+              ...typography.truncate({ xs: '100%' })
+            })}
           >
             <Typography variant="h5" sx={{ color: 'inherit', fontWeight: 'bold' }}>
               {user?.displayName}

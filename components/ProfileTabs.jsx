@@ -42,7 +42,14 @@ function a11yProps(index) {
 
 export default function ProfileTabs({ value, onChange }) {
   return (
-    <Box sx={{ position: 'absolute', bottom: -49, right: 0 }}>
+    <Box
+      sx={{
+        position: 'absolute',
+        bottom: -49,
+        left: { xs: '50%', md: '100%' },
+        transform: { xs: 'translateX(-50%)', md: 'translateX(-100%)' }
+      }}
+    >
       <Tabs value={value} onChange={onChange} variant="scrollable">
         <Tab
           iconPosition="start"
