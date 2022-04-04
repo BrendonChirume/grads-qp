@@ -6,9 +6,10 @@ import { CacheProvider } from '@emotion/react';
 import CssBaseline from '@mui/material/CssBaseline';
 import createEmotionCache from '../components/createEmotionCache';
 import theme from '../components/theme';
-import { AuthContextProvider } from '../context/AuthContext';
 import AuthRequired from '../components/AuthRequired';
 import DrawerLayout from '../containers/DrawerLayout';
+import { Toolbar } from '@mui/material';
+import AuthProvider from '../context/AuthContext';
 
 const clientSideEmotionCache = createEmotionCache();
 const noAuthRequired = ['/login', '/signup'];
@@ -16,10 +17,21 @@ const noAuthRequired = ['/login', '/signup'];
 export default function MyApp(props) {
   const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
   const router = useRouter();
-  const DynamicLayout = Component.Layout || DrawerLayout;
+  const DynamicLayout =
+    (Component.Layout &&
+      function LayoutMain(props) {
+        const { children, ...rest } = props;
+        return (
+          <Component.Layout sx={{}} {...rest}>
+            <Toolbar />
+            {children}
+          </Component.Layout>
+        );
+      }) ||
+    DrawerLayout;
 
   return (
-    <AuthContextProvider>
+    <AuthProvider>
       <CacheProvider value={emotionCache}>
         <Head>
           <meta name="viewport" content="initial-scale=1, width=device-width" />
@@ -38,6 +50,6 @@ export default function MyApp(props) {
           )}
         </ThemeProvider>
       </CacheProvider>
-    </AuthContextProvider>
+    </AuthProvider>
   );
 }

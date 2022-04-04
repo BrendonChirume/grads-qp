@@ -1,19 +1,15 @@
-import { useContext } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
+import LayoutProvider, { useLayout } from '../context/LayoutContext';
 import Navigation from '../components/Navigation';
 import { Container } from '@mui/material';
-import LayoutProvider, { useLayout } from '../context/LayoutContext';
 
-const Layout = ({ children }) => {
+function Layout({ children, ...rest }) {
   const { handleDrawerToggle } = useLayout();
-
-  console.log(handleDrawerToggle);
   return (
     <Box
-      component="main"
       sx={{
+        display: 'flex',
         backgroundColor: (theme) =>
           theme.palette.mode === 'light'
             ? theme.palette.grey[100]
@@ -27,27 +23,29 @@ const Layout = ({ children }) => {
             background: '#c1c1c1',
             borderRadius: '0.7rem'
           }
-        }
+        },
+        ...rest.sx
       }}
     >
-      {/* Navigation */}
       <Navigation handleDrawerToggle={handleDrawerToggle} />
-      <Container sx={{ p: 3 }}>{children}</Container>
+      {rest.sx ? (
+        <Container sx={{ p: 3, flexGrow: 1 }}>
+          {children}
+          <Box sx={{ pb: 5 }}></Box>
+        </Container>
+      ) : (
+        children
+      )}
     </Box>
   );
-};
+}
 
-const MainLayout = (props) => (
-  <LayoutProvider>
-    <Layout {...props} />
-  </LayoutProvider>
-);
-
-MainLayout.LayoutContent = MainLayout;
-
-MainLayout.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
-    .isRequired
+const MainLayout = (props) => {
+  return (
+    <LayoutProvider>
+      <Layout {...props} />
+    </LayoutProvider>
+  );
 };
 
 export default MainLayout;

@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { CardActionArea, Grid } from '@mui/material';
 import Icons from './Icons';
 import { useRouter } from 'next/router';
 
@@ -16,35 +16,48 @@ export default function CourseCard({ coursename }) {
       onClick={() => router.push(`/courses/${coursename.replace(/\s/g, '-')}`)}
     >
       <CardActionArea sx={{ display: { xs: 'flex', sm: 'block' } }}>
-        <CardMedia height="140" alt="green iguana">
-          <Icons.ImgAlt
-            sx={{ height: 110, width: 130, color: 'rgb(229, 231, 235)' }}
-          />
-        </CardMedia>
-        <CardContent>
-          <Typography
-            title={coursename}
-            variant="h6"
-            sx={({ typography }) => ({
-              fontWeight: 700,
-              ...typography.truncate('100%')
-            })}
-            component="h6"
-          >
-            {coursename}
-          </Typography>
-          <Typography variant="body1" color="text.secondary">
-            Department of computer science
-          </Typography>
-          <Typography
-            component="small"
-            textAlign="right"
-            variant="subtitle2"
-            color="text.secondary"
-          >
-            8 File(s)
-          </Typography>
-        </CardContent>
+        <Grid container sx={{ alignItems: 'center' }}>
+          <Grid item xs={4} sm={12}>
+            <CardMedia
+              height="140"
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+            >
+              <Icons.ImgAlt
+                sx={{ height: 110, width: 130, color: 'rgb(229, 231, 235)' }}
+              />
+            </CardMedia>
+          </Grid>
+          <Grid item xs={8} sm={12}>
+            <CardContent>
+              <Typography
+                title={coursename}
+                variant="h6"
+                sx={({ typography }) => ({
+                  fontWeight: 700,
+                  ...typography.truncate('100%')
+                })}
+                component="h6"
+              >
+                {coursename}
+              </Typography>
+              <Typography variant="body1" color="text.secondary">
+                Department of computer science
+              </Typography>
+              <Typography
+                component="small"
+                textAlign="right"
+                variant="subtitle2"
+                color="text.secondary"
+              >
+                8 File(s)
+              </Typography>
+            </CardContent>
+          </Grid>
+        </Grid>
       </CardActionArea>
     </Card>
   );
