@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../config/firebase';
+import { auth } from '../firebase/firebase';
 import CircularIndeterminate from '../components/CircularIndeterminate';
 
 const AuthContext = createContext({});

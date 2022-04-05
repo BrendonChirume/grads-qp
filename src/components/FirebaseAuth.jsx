@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import { firebaseConfig } from '../config/firebase';
+import { firebaseConfig } from '../firebase/firebase';
 
 firebase.initializeApp(firebaseConfig);
 
