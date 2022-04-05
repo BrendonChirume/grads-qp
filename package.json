@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next src/",
-    "build": "next build src/",
+    "export": "next export src/",
+    "build": "next build src/ && yarn export",
     "start": "next start src/",
     "lint": "next lint src/",
-    "export": "next export",
     "serve": "npm run build && firebase emulators:start --only functions,hosting",
     "shell": "npm run build && firebase functions:shell",
     "deploy": "firebase deploy --only functions,hosting",
