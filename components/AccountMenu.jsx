@@ -89,7 +89,7 @@ export default function AccountMenu() {
         <MenuItem component={RouterLink} href={`/profile/${user?.email}`}>
           {avatar}
           <Box>
-            <Typography sx={({ typography }) => typography.truncate(135)}>
+            <Typography sx={({ typography }) => typography.truncate(150)}>
               {user?.displayName}
             </Typography>
             <Typography

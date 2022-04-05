@@ -5,7 +5,9 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { tabClasses } from '@mui/material';
-import ArticleIcon from '@mui/icons-material/Article';
+import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import LowPriorityIcon from '@mui/icons-material/LowPriority';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,22 +55,22 @@ export default function ProfileTabs({ value, onChange }) {
       <Tabs value={value} onChange={onChange} variant="scrollable">
         <Tab
           iconPosition="start"
-          icon={<ArticleIcon />}
+          icon={<DriveFolderUploadIcon />}
           label="Uploads"
           {...a11yProps(0)}
           sx={{ [`&.${tabClasses.root}`]: { minHeight: 48 } }}
         />
         <Tab
           iconPosition="start"
-          icon={<ArticleIcon />}
-          label="Item Two"
+          icon={<ManageAccountsIcon />}
+          label="Details"
           {...a11yProps(1)}
           sx={{ [`&.${tabClasses.root}`]: { minHeight: 48 } }}
         />
         <Tab
           iconPosition="start"
-          icon={<ArticleIcon />}
-          label="Item Three"
+          icon={<LowPriorityIcon />}
+          label="Organise"
           {...a11yProps(2)}
           sx={{ [`&.${tabClasses.root}`]: { minHeight: 48 } }}
         />

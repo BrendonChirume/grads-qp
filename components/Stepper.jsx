@@ -1,6 +1,14 @@
 import { useState } from 'react';
 import { func } from 'prop-types';
-import { Box, Button, Step, StepButton, Stepper, Typography } from '@mui/material';
+import {
+  Alert,
+  Box,
+  Button,
+  Step,
+  StepButton,
+  Stepper,
+  Typography
+} from '@mui/material';
 
 const steps = ['Personal Details', 'Verify Details'];
 
@@ -36,8 +44,13 @@ export default function LinearStepper({ getStepContent }) {
   };
 
   return (
-    <Box sx={{ width: '100%', pt: 4 }}>
-      <Stepper nonLinear activeStep={activeStep}>
+    <>
+      <Box sx={{ pb: 4 }}>
+        <Alert severity="info" variant="outlined">
+          Filling up your profile will help us suggest with relavent papers!
+        </Alert>
+      </Box>
+      <Stepper activeStep={activeStep}>
         {steps.map((label, index) => (
           <Step key={label} completed={completed[index]}>
             <StepButton color="inherit" onClick={handleStep(index)}>
@@ -46,7 +59,7 @@ export default function LinearStepper({ getStepContent }) {
           </Step>
         ))}
       </Stepper>
-      {getStepContent(activeStep)}
+      <Box sx={{ py: 4 }}>{getStepContent(activeStep)}</Box>
       <div>
         {allStepsCompleted() ? (
           <>
@@ -97,7 +110,7 @@ export default function LinearStepper({ getStepContent }) {
           </>
         )}
       </div>
-    </Box>
+    </>
   );
 }
 

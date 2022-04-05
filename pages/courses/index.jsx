@@ -1,7 +1,8 @@
 import React from 'react';
-import { Grid } from '@mui/material';
+import { Grid, Stack } from '@mui/material';
 import CourseCard from '../../components/CourseCard';
 import GradsBreadCrumbs from '../../components/GradsBreadCrumbs';
+import ViewButtons from '../../components/ViewButtons';
 
 const courses = [
   { name: 'Linear Algebra' },
@@ -15,7 +16,13 @@ const courses = [
 const Index = () => {
   return (
     <div>
-      <GradsBreadCrumbs />
+      <Stack
+        direction="row"
+        sx={{ alignItems: 'center', justifyContent: 'space-between', pb: 2 }}
+      >
+        <GradsBreadCrumbs />
+        <ViewButtons />
+      </Stack>
       <Grid container spacing={2}>
         {courses.map(({ name }) => (
           <Grid item xs={12} sm={6} lg={3} key={name}>

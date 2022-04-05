@@ -1,10 +1,10 @@
+import { useEffect, useMemo, useState } from 'react';
 import { capitalize, Typography } from '@mui/material';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useRouter } from 'next/router';
 import RouterLink from './RouterLink';
-import { useEffect, useMemo, useState } from 'react';
 
 const handleClick = (event) => {
   event.preventDefault();
@@ -40,6 +40,7 @@ const GradsBreadCrumbs = () => {
           return last ? (
             <Typography
               color="text.primary"
+              component="h2"
               key={href}
               sx={{ textTransform: 'capitalize' }}
             >

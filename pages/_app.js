@@ -7,7 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import createEmotionCache from '../components/createEmotionCache';
 import theme from '../components/theme';
 import AuthRequired from '../components/AuthRequired';
-import DrawerLayout from '../containers/DrawerLayout';
+import DrawerLayout from '../layouts/DrawerLayout';
 import { Toolbar } from '@mui/material';
 import AuthProvider from '../context/AuthContext';
 

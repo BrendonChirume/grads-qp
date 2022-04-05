@@ -58,7 +58,7 @@ export default function MobileDrawer({ isMobile }) {
       >
         <Toolbar>
           <RouterLink href="/" underline="none">
-            <Typography component="h1" variant="h6" noWrap>
+            <Typography component="h2" variant="h6" noWrap>
               GRADS QP
             </Typography>
           </RouterLink>

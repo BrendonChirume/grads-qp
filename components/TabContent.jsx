@@ -1,10 +1,12 @@
+import { Box } from '@mui/material';
 import { oneOfType, node, number, arrayOf } from 'prop-types';
 
 export default function TabContent(props) {
   const { children, value, index, ...other } = props;
 
   return (
-    <div
+    <Box
+      sx={{ pt: 3 }}
       role="tabpanel"
       hidden={value !== index}
       id={`profile-tabpanel-${index}`}
@@ -12,7 +14,7 @@ export default function TabContent(props) {
       {...other}
     >
       {value === index && <>{children}</>}
-    </div>
+    </Box>
   );
 }
 

@@ -32,7 +32,7 @@ export default function CourseCard({ coursename }) {
             </CardMedia>
           </Grid>
           <Grid item xs={8} sm={12}>
-            <CardContent>
+            <CardContent sx={{ pb: { md: '8px!important' } }}>
               <Typography
                 title={coursename}
                 variant="h6"
@@ -40,7 +40,7 @@ export default function CourseCard({ coursename }) {
                   fontWeight: 700,
                   ...typography.truncate('100%')
                 })}
-                component="h6"
+                component="h3"
               >
                 {coursename}
               </Typography>
@@ -48,9 +48,8 @@ export default function CourseCard({ coursename }) {
                 Department of computer science
               </Typography>
               <Typography
-                component="small"
-                textAlign="right"
-                variant="subtitle2"
+                component="div"
+                sx={{ textAlign: { md: 'right', fontSize: 13 } }}
                 color="text.secondary"
               >
                 8 File(s)

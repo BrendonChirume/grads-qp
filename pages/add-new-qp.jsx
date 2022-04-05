@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Avatar, Box, Button, Grid, Stack, Typography } from '@mui/material';
 import StyledInput from '../components/StyledInput';
-import MainLayout from '../containers/MainLayout';
+import MainLayout from '../layouts/MainLayout';
 import Icons from '../components/Icons';
 
 const AddNewQp = (props) => {
