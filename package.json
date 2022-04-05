@@ -3,11 +3,16 @@
   "version": "0.1.3",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "export": "next export"
+    "dev": "next src/",
+    "export": "next export src/",
+    "build": "next build src/ && yarn export",
+    "start": "next start src/",
+    "lint": "next lint src/",
+    "serve": "npm run build && firebase emulators:start --only functions,hosting",
+    "shell": "npm run build && firebase functions:shell",
+    "deploy": "firebase deploy --only functions,hosting",
+    "deploy:token": "firebase deploy --only functions,hosting --token ${FIREBASE_TOKEN}",
+    "logs": "firebase functions:log"
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
@@ -19,6 +24,7 @@
     "axios": "^0.26.1",
     "firebase": "^9.6.10",
     "firebase-admin": "^10.0.0",
+    "firebase-functions": "^3.20.0",
     "next": "12.1.0",
     "next-absolute-url": "^1.2.2",
     "next-firebase-auth": "^0.14.1-alpha.0",
