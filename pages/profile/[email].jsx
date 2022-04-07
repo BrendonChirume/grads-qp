@@ -164,7 +164,14 @@ const Email = (props) => {
               ...typography.truncate({ xs: '100%' })
             })}
           >
-            <Typography variant="h5" sx={{ color: 'inherit', fontWeight: 'bold' }}>
+            <Typography
+              variant="h5"
+              sx={{
+                color: 'inherit',
+                textTransform: 'capitalize',
+                fontWeight: 'bold'
+              }}
+            >
               {user?.displayName}
             </Typography>
             <Typography variant="body1" sx={{ color: 'inherit' }}>
