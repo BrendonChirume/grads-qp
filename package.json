@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next src/",
-    "build": "next build src/",
-    "start": "next start src/",
-    "lint": "next lint src/",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
     "deploy:token": "firebase deploy --only functions,hosting --token ${FIREBASE_TOKEN}",
     "logs": "firebase functions:log"
   },
