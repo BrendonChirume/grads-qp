@@ -13,10 +13,6 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="shortcut icon" href="/static/favicon.ico" />
           <meta
-            name="google-site-verification"
-            content="RHhlpU0hM9Teo1gKMUS9NdW9eitJnbN7koamuKY3mpo"
-          />
-          <meta
             name="description"
             content="A simple, modern, and university question paper directory"
           />
