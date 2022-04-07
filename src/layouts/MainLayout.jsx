@@ -19,14 +19,7 @@ function Layout({ children, variant, ...rest }) {
             : theme.palette.grey[900],
         flexGrow: 1,
         height: '100%',
-        overflowY: 'scroll',
-        '&': {
-          '::-webkit-scrollbar': { width: '0.7rem' },
-          '::-webkit-scrollbar-thumb': {
-            background: '#c1c1c1',
-            borderRadius: '0.7rem'
-          }
-        }
+        overflowY: 'scroll'
       }}
     >
       <Navigation handleDrawerToggle={handleDrawerToggle} />

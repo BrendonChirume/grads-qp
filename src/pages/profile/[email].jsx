@@ -8,6 +8,8 @@ import {
   styled,
   Typography
 } from '@mui/material';
+import { query, collection, onSnapshot } from 'firebase/firestore';
+import { db } from '../../firebase/firebase';
 import { HistoryEdu } from '@mui/icons-material';
 import { useAuth } from '../../context/AuthContext';
 import AsyncAutocomplete from '../../components/AsyncAutoComplete';
@@ -33,50 +35,53 @@ const Banner = styled(Box)(({ theme }) => ({
 const Email = (props) => {
   const { user } = useAuth();
   const [value, setValue] = React.useState(0);
+  const [options, setOptions] = React.useState([]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  React.useEffect(() => {
+    const uniRef = collection(db, 'universities');
+    const q = query(uniRef);
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      setOptions(snapshot.docs.map((doc) => doc.data()));
+    });
+    return unsubscribe;
+  }, []);
 
   const getStepContent = (activeStep) => {
     switch (activeStep) {
       case 0:
         return (
           <Grid container spacing={2} sx={{ mt: 2 }}>
-            <Grid item xs={12} md={4} lg={3}>
+            <Grid item xs={12} md={4}>
               <AsyncAutocomplete
-                list={[
-                  { logo: '', name: 'University of Zimbabwe' },
-                  {
-                    logo: '',
-                    name: 'National University of Science and Technology of Zimbabwe'
-                  },
-                  {
-                    logo: '',
-                    name: 'Midlands State University'
-                  },
-                  {
-                    logo: '',
-                    name: 'Bindura State University'
-                  },
-                  {
-                    logo: '',
-                    name: 'Africa University'
-                  }
-                ]}
+                options={options}
                 isOptionEqualToValue={(option, value) => option.name === value.name}
                 getOptionLabel={(option) => option.name}
-                renderOption={(renderProps, { logo, name }) => (
+                renderOption={(renderProps, { logoUrl, name }) => (
                   <Stack flexDirection="row" sx={{ px: 2, py: 1 }} {...renderProps}>
-                    <Icons.ImgAlt
+                    <Avatar
+                      variant="rounded"
+                      src={logoUrl}
                       sx={{
+                        backgroundColor: 'common.white',
                         height: 30,
-                        width: 30,
-                        fill: 'currentcolor',
-                        color: '#e5e7eb'
+                        width: 30
                       }}
-                    />
-                    <Typography variant="body1" sx={{ ml: 1 }}>
+                    >
+                      <Icons.ImgAlt
+                        sx={{
+                          height: '100%',
+                          width: '100%',
+                          // fill: 'currentcolor',
+                          color: '#e5e7eb'
+                        }}
+                      />
+                    </Avatar>
+                    <Typography variant="body1" noWrap sx={{ ml: 1 }}>
                       {name}
                     </Typography>
                   </Stack>

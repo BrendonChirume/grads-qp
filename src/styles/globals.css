@@ -9,3 +9,13 @@ body,
   height: 100%;
   color: #444;
 }
+::-webkit-scrollbar {
+  width: 0.7rem;
+}
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 0.7rem;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+}
