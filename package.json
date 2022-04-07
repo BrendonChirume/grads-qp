@@ -4,13 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next src/",
-    "export": "next export src/",
-    "build": "next build src/ && yarn export",
+    "build": "next build src/",
     "start": "next start src/",
     "lint": "next lint src/",
-    "serve": "npm run build && firebase emulators:start --only functions,hosting",
-    "shell": "npm run build && firebase functions:shell",
-    "deploy": "firebase deploy --only functions,hosting",
     "deploy:token": "firebase deploy --only functions,hosting --token ${FIREBASE_TOKEN}",
     "logs": "firebase functions:log"
   },
