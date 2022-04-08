@@ -3,11 +3,13 @@
 const ContentSecurityPolicy = `
   default-src https://securetoken.googleapis.com 'self';
   script-src https://grads-qp.vercel.app 'self' 'unsafe-eval' 'unsafe-inline';
-  child-src 'none';
-  img-src https://lh3.googleusercontent.com/ 'self' data:;
+  script-src-elem https: 'self';
+  child-src https://grads-qp.firebaseapp.com 'self';
+  img-src https: 'self';
   style-src https://fonts.googleapis.com 'unsafe-inline' 'self';
   font-src https://fonts.gstatic.com https://fonts.googleapis.com 'self';
   connect-src https://identitytoolkit.googleapis.com 'self';
+  media-src 'none';
 `;
 
 const securityHeaders = [
