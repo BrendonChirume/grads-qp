@@ -146,6 +146,7 @@ const Email = (props) => {
               border: '3px solid white',
               fontSize: ({ typography }) => typography.pxToRem(48)
             }}
+            alt="avatar"
             src={user?.photoURL}
           >
             {user?.displayName

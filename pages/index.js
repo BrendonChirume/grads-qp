@@ -1,6 +1,8 @@
+import dynamic from 'next/dynamic';
 import { History } from '@mui/icons-material';
 import { Box, Grid, Typography } from '@mui/material';
-import QPCard from '../components/qp-card';
+
+const QPCard = dynamic(() => import('../components/qp-card'));
 
 export default function Index() {
   return (

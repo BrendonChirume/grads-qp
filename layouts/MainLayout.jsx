@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import LayoutProvider, { useLayout } from '../context/LayoutContext';
 import Navigation from '../components/Navigation';

@@ -1,8 +1,9 @@
-import * as React from 'react';
+import dynamic from 'next/dynamic';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import MainLayout from './MainLayout';
 import { useLayout } from '../context/LayoutContext';
+
+const MainLayout = dynamic(() => import('./MainLayout'));
 
 function Layout(props) {
   const { children } = props;

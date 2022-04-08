@@ -7,9 +7,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 import createEmotionCache from '../components/createEmotionCache';
 import theme from '../components/theme';
 import AuthRequired from '../components/AuthRequired';
-import DrawerLayout from '../layouts/DrawerLayout';
 import { Toolbar } from '@mui/material';
 import AuthProvider from '../context/AuthContext';
+import dynamic from 'next/dynamic';
 
 const clientSideEmotionCache = createEmotionCache();
 const noAuthRequired = ['/login', '/signup'];
@@ -28,7 +28,7 @@ export default function MyApp(props) {
           </Component.Layout>
         );
       }) ||
-    DrawerLayout;
+    dynamic(() => import('../layouts/DrawerLayout'));
 
   return (
     <AuthProvider>
