@@ -11,10 +11,29 @@ export default class MyDocument extends Document {
         <Head>
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
+          <link rel="manifest" href="manifest.json" />
+
+          <meta name="mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="application-name" content="Grads QP" />
+          <meta name="apple-mobile-web-app-title" content="Grads QP" />
+          <meta
+            name="msapplication-navbutton-color"
+            content={theme.palette.primary.main}
+          />
+          <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+          />
+          <meta name="msapplication-starturl" content="/" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          />
           <link rel="shortcut icon" href="/static/favicon.ico" />
           <meta
             name="description"
-            content="A simple, modern, and university question paper directory"
+            content="A simple, and modern question paper directory for universities."
           />
           <link rel="icon" href="/favicon.ico" />
           <link rel="manifest" href="/site.webmanifest" />

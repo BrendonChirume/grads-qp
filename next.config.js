@@ -1,16 +1,16 @@
 /** @type {import('next').NextConfig} */
 
-const ContentSecurityPolicy = `
-  default-src https: 'self';
-  script-src https://grads-qp.vercel.app 'self' 'unsafe-eval' 'unsafe-inline';
-  script-src-elem https: 'self';
-  child-src https://grads-qp.firebaseapp.com 'self';
-  img-src https: 'self';
-  style-src https://fonts.googleapis.com 'unsafe-inline' 'self';
-  font-src https://fonts.gstatic.com https://fonts.googleapis.com 'self';
-  connect-src https://identitytoolkit.googleapis.com 'self';
-  media-src 'none';
-`;
+// const ContentSecurityPolicy = `
+//   default-src https://securetoken.googleapis.com 'self';
+//   script-src https://grads-qp.vercel.app 'self' 'unsafe-eval' 'unsafe-inline';
+//   script-src-elem https: 'self';
+//   child-src https://grads-qp.firebaseapp.com 'self';
+//   img-src https: 'self';
+//   style-src https://fonts.googleapis.com 'unsafe-inline' 'self';
+//   font-src https://fonts.gstatic.com https://fonts.googleapis.com 'self';
+//   connect-src 'dynamic-src' https://identitytoolkit.googleapis.com 'self';
+//   media-src 'none';
+// `;
 
 const securityHeaders = [
   {
@@ -28,11 +28,11 @@ const securityHeaders = [
   {
     key: 'Referrer-Policy',
     value: 'origin-when-cross-origin'
-  },
-  {
-    key: 'Content-Security-Policy',
-    value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
   }
+  // {
+  //   key: 'Content-Security-Policy',
+  //   value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
+  // }
 ];
 
 const nextConfig = {
