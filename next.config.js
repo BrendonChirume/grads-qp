@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const ContentSecurityPolicy = `
-  default-src https://securetoken.googleapis.com 'self';
+  default-src https: 'self';
   script-src https://grads-qp.vercel.app 'self' 'unsafe-eval' 'unsafe-inline';
   script-src-elem https: 'self';
   child-src https://grads-qp.firebaseapp.com 'self';
