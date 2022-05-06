@@ -11,8 +11,11 @@ import { Toolbar } from '@mui/material';
 import AuthProvider from '../context/AuthContext';
 import dynamic from 'next/dynamic';
 
+const NotiSnackBar = dynamic(() => import('../components/NotiSnackBar'), {
+  ssr: false,
+});
 const clientSideEmotionCache = createEmotionCache();
-const noAuthRequired = ['/login', '/signup'];
+const noAuthRequired = ['/login'];
 
 export default function MyApp(props) {
   const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
@@ -35,6 +38,31 @@ export default function MyApp(props) {
       <CacheProvider value={emotionCache}>
         <Head>
           <meta name="viewport" content="initial-scale=1, width=device-width" />
+          <meta name="theme-color" content={theme.palette.primary.main} />
+          <link rel="manifest" href="manifest.json" />
+
+          <meta name="mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="application-name" content="Grads QP" />
+          <meta name="apple-mobile-web-app-title" content="Grads QP" />
+          <meta
+            name="msapplication-navbutton-color"
+            content={theme.palette.primary.main}
+          />
+          <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+          />
+          <meta name="msapplication-starturl" content="/" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          />
+          <link rel="shortcut icon" href="/static/favicon.ico" />
+          <meta
+            name="description"
+            content="A simple, and modern question paper directory for universities."
+          />
           <title>Grads QP - directory</title>
         </Head>
         <ThemeProvider theme={theme}>
@@ -46,6 +74,7 @@ export default function MyApp(props) {
             <AuthRequired>
               <DynamicLayout>
                 <Component {...pageProps} />
+                <NotiSnackBar />
               </DynamicLayout>
             </AuthRequired>
           )}

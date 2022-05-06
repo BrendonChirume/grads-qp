@@ -1,19 +1,39 @@
 import dynamic from 'next/dynamic';
-import Box from '@mui/material/Box';
+import styled from '@mui/material/styles/styled';
 import Toolbar from '@mui/material/Toolbar';
-import { useLayout } from '../context/LayoutContext';
+import { useUtil } from '../context/UtilContext';
 
 const MainLayout = dynamic(() => import('./MainLayout'));
 
+const Main = styled('div', {
+  shouldForwardProp: (prop) => !['open', 'drawerDetailsWidth'].includes(prop),
+})(({ theme, open, drawerDetailsWidth }) => ({
+  width: { sm: `calc(100% - ${drawerDetailsWidth}px)` },
+  flexGrow: 1,
+  padding: theme.spacing(3),
+  transition: theme.transitions.create('margin', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  [theme.breakpoints.up('sm')]: { marginRight: open ? 0 : -drawerDetailsWidth },
+  ...(open && {
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginRight: 0,
+  }),
+}));
+
 function Layout(props) {
   const { children } = props;
-  const { drawerWidth } = useLayout();
+  const { context, drawerDetailsWidth } = useUtil();
 
   return (
-    <Box sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
+    <Main drawerDetailsWidth={drawerDetailsWidth} open={context.drawer.details}>
       <Toolbar />
       {children}
-    </Box>
+    </Main>
   );
 }
 

@@ -1,7 +1,6 @@
 import { Grid, Stack } from '@mui/material';
 import GradsBreadCrumbs from '../../components/GradsBreadCrumbs';
 import QPCard from '../../components/qp-card';
-import ViewButtons from '../../components/ViewButtons';
 
 export default function Index() {
   return (
@@ -11,7 +10,6 @@ export default function Index() {
         sx={{ alignItems: 'center', justifyContent: 'space-between', pb: 2 }}
       >
         <GradsBreadCrumbs />
-        <ViewButtons />
       </Stack>
       <Grid
         container

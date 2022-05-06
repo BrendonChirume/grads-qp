@@ -1,5 +1,7 @@
+import InfoIcon from '@mui/icons-material/Info';
 import { Avatar, Card, CardActionArea, CardActions, CardMedia } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import { useUtil } from '../context/UtilContext';
 import Icons from './Icons';
 
 function preventDefault(event) {
@@ -7,6 +9,8 @@ function preventDefault(event) {
 }
 
 export default function QPTile() {
+  const { handleDrawerToggle } = useUtil();
+
   return (
     <Card sx={{ overflow: 'hidden' }}>
       <CardActionArea>
@@ -17,7 +21,7 @@ export default function QPTile() {
               width: '100%',
               height: 130,
               margin: '0 auto',
-              backgroundColor: '#fff'
+              backgroundColor: '#fff',
             }}
           >
             <Icons.ImgAlt
@@ -25,12 +29,21 @@ export default function QPTile() {
             />
           </Avatar>
         </CardMedia>
-        <CardActions>
-          <Typography color="text.secondary" sx={{ flex: 1 }}>
-            15 March, 2019
-          </Typography>
-        </CardActions>
       </CardActionArea>
+      <CardActions
+        onClick={() => handleDrawerToggle('details')}
+        sx={{
+          cursor: 'pointer',
+          '&:hover': {
+            backgroundColor: 'rgba(0, 0, 0, 0.03)',
+          },
+        }}
+      >
+        <Typography color="text.secondary" sx={{ flex: 1 }}>
+          15 March, 2019
+        </Typography>
+        <InfoIcon sx={{ color: '#dadbdd' }} />
+      </CardActions>
     </Card>
   );
 }

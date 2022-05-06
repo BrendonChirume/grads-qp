@@ -23,7 +23,7 @@ export default function CourseCard({ coursename }) {
               sx={{
                 display: 'flex',
                 justifyContent: 'center',
-                alignItems: 'center'
+                alignItems: 'center',
               }}
             >
               <Icons.ImgAlt
@@ -38,7 +38,7 @@ export default function CourseCard({ coursename }) {
                 variant="h6"
                 sx={({ typography }) => ({
                   fontWeight: 700,
-                  ...typography.truncate('100%')
+                  ...typography.truncate('100%'),
                 })}
                 component="h3"
               >
@@ -63,5 +63,5 @@ export default function CourseCard({ coursename }) {
 }
 
 CourseCard.propTypes = {
-  coursename: PropTypes.string.isRequired
+  coursename: PropTypes.string.isRequired,
 };
