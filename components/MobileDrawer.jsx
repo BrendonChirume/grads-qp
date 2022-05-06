@@ -61,21 +61,20 @@ export default function MobileDrawer({ isMobile }) {
       component="nav"
       sx={{
         width: { sm: drawerWidth },
-        flexShrink: { sm: 0 },
-        zIndex: ({ zIndex }) => zIndex.drawer + 1,
+        flexShrink: { sm: 0 }
       }}
     >
       <Drawer
         variant={isMobile ? 'temporary' : 'permanent'}
         open={isMobile ? context.drawer.main : false}
-        onClose={handleDrawerToggle}
+        onClose={() => handleDrawerToggle('main')}
         ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
+          keepMounted: true // Better open performance on mobile.
         }}
         sx={{
           zIndex: ({ zIndex }) => zIndex.drawer + (isMobile && 2),
           display: 'block',
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
         }}
       >
         <Toolbar disableGutters sx={{ px: 2 }}>
@@ -107,5 +106,5 @@ export default function MobileDrawer({ isMobile }) {
 }
 
 MobileDrawer.propTypes = {
-  isMobile: PropTypes.bool.isRequired,
+  isMobile: PropTypes.bool.isRequired
 };

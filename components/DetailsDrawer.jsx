@@ -14,7 +14,7 @@ export default function DetailsDrawer({ isMobile }) {
       component="nav"
       sx={{
         width: { sm: drawerDetailsWidth },
-        flexShrink: { sm: 0 },
+        flexShrink: { sm: 0 }
       }}
     >
       <Drawer
@@ -23,18 +23,18 @@ export default function DetailsDrawer({ isMobile }) {
         onClose={() => handleDrawerToggle('details')}
         open={context.drawer.details}
         ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
+          keepMounted: true // Better open performance on mobile.
         }}
         sx={{
-          zIndex: ({ zIndex }) => zIndex.drawer + (isMobile && 2),
+          zIndex: ({ zIndex }) => zIndex.drawer,
           display: 'block',
           '& .MuiBackdrop-root': {
-            backgroundColor: 'rgb(0 10 0 / 10%)',
+            backgroundColor: 'rgb(0 10 0 / 10%)'
           },
           '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
-            width: drawerDetailsWidth,
-          },
+            width: drawerDetailsWidth
+          }
         }}
       >
         <Toolbar />
@@ -46,5 +46,5 @@ export default function DetailsDrawer({ isMobile }) {
 }
 
 DetailsDrawer.propTypes = {
-  isMobile: PropTypes.bool.isRequired,
+  isMobile: PropTypes.bool.isRequired
 };

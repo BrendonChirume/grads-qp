@@ -50,7 +50,7 @@ const Navigation = ({ handleDrawerToggle }) => {
             color="inherit"
             aria-label="open drawer"
             edge="start"
-            onClick={() => handleDrawerToggle()}
+            onClick={() => handleDrawerToggle('main')}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />
