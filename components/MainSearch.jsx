@@ -2,9 +2,8 @@ import PropTypes from 'prop-types';
 import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
 import Box from '@mui/material/Box';
-import styled from '@mui/material/styles/styled';
 import Button from '@mui/material/Button';
-import { alpha } from '@mui/material';
+import { alpha, styled } from '@mui/material';
 import InputBase from '@mui/material/InputBase';
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({

@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
-import styled from '@mui/material/styles/styled';
 import Toolbar from '@mui/material/Toolbar';
 import { useUtil } from '../context/UtilContext';
+import { styled } from '@mui/material';
 
 const MainLayout = dynamic(() => import('./MainLayout'));
 
